@@ -54,21 +54,17 @@ talentrank-ai/
 
 ## Screenshots
 
-> Placeholder images below. Replace them with real screenshots in `docs/screenshots/` before publishing.
+> Placeholder images below.
 
-| Page | Placeholder |
-|---|---|
-| Login | `docs/screenshots/login.png` |
-| Dashboard | `docs/screenshots/dashboard.png` |
-| Jobs List | `docs/screenshots/jobs.png` |
-| Candidate Upload | `docs/screenshots/upload.png` |
-| Ranking Results | `docs/screenshots/ranking.png` |
-| Analytics | `docs/screenshots/analytics.png` |
+| Page | Screenshot |
+|------|------------|
+| Login | ![Login](docs/screenshots/login.png) |
+| Dashboard | ![Dashboard](docs/screenshots/dashboard.png) |
+| Jobs List | ![Jobs List](docs/screenshots/jobs.png) |
+| Candidate Upload | ![Candidate Upload](docs/screenshots/upload.png) |
+| Ranking Results | ![Ranking Results](docs/screenshots/ranking.png) |
+| Analytics | ![Analytics](docs/screenshots/analytics.png) |
 
-```markdown
-![Login](docs/screenshots/login.png)
-![Dashboard](docs/screenshots/dashboard.png)
-```
 
 ---
 
@@ -233,3 +229,8 @@ All endpoints except `/api/auth/*` require a `Bearer <token>` header.
 - **Real ML model** — Replace the rule-based scoring with a fine-tuned model or LLM evaluation.
 - **Email notifications** — Send alerts when high-scoring candidates are uploaded.
 - **Candidate search / filtering** — Add search and filter controls to the candidates list.
+
+---
+
+## 👨‍💻 Developer
+**Siddardha Shayini** 
