@@ -1,3 +1,4 @@
+const API_BASE = import.meta.env.VITE_API_URL || '';
 // All API calls use relative paths so Vite's proxy forwards them to the backend.
 const getStoredAuth = () => {
   if (typeof window === 'undefined') return null;
@@ -36,7 +37,7 @@ export const apiRequest = async (path, options = {}) => {
     requestHeaders.set('Authorization', `Bearer ${token}`);
   }
 
-  const response = await fetch(path, {
+  const response = await fetch(`${API_BASE}${path}`, {
     ...rest,
     headers: requestHeaders,
     body: body ? (isFormData ? body : JSON.stringify(body)) : undefined,
