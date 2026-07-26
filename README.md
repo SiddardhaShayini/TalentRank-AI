@@ -2,7 +2,57 @@
 
 ## Project Overview
 
-TalentRank AI is a lightweight, AI-assisted recruiting platform. It helps hiring teams publish job openings, upload resumes, and rank candidates automatically using a rule-based scoring engine. The stack is intentionally simple: a React frontend, an Express backend, and a SQLite database — making it easy to run, modify, and extend.
+TalentRank AI is an AI-assisted recruiting platform designed to simplify the hiring process. It enables recruiters to create job postings, upload candidate resumes, automatically rank applicants using an AI-powered scoring engine, and analyze hiring metrics through an interactive dashboard.
+
+The application is built using a modern full-stack architecture with a React frontend, Express.js backend, and SQLite database. It demonstrates authentication, CRUD operations, resume management, AI-assisted candidate ranking, analytics, and complete deployment using GitHub, Render, and Vercel.
+
+---
+
+## Live Demo
+
+### Application
+
+- **Frontend (Vercel):** https://talent-rank-ai-mocha.vercel.app/
+
+### Backend
+
+- **API:** https://talentrank-ai-i0of.onrender.com/
+- **Health Check:** https://talentrank-ai-i0of.onrender.com/health
+
+### Source Code
+
+- **GitHub Repository:** https://github.com/SiddardhaShayini/TalentRank-AI
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- React 18
+- Vite
+- JavaScript
+- HTML5
+- CSS3
+
+### Backend
+
+- Node.js
+- Express.js
+
+### Database
+
+- SQLite
+
+### Authentication
+
+- JWT (JSON Web Token)
+
+### Deployment
+
+- GitHub
+- Vercel
+- Render
 
 ---
 
@@ -10,61 +60,69 @@ TalentRank AI is a lightweight, AI-assisted recruiting platform. It helps hiring
 
 | Feature | Description |
 |---|---|
-| **Authentication** | JWT-based login and registration. Protected routes redirect to `/login` if the token is missing. |
-| **Dashboard** | Live overview of jobs, candidates, ranking accuracy, and average time to hire. |
-| **Job Management** | Create, edit, delete, and view job postings. |
-| **Candidate Pool** | Browse uploaded candidates, view their profile, and track their status. |
-| **Resume Upload** | Upload a resume file plus candidate metadata. The backend creates a candidate, stores the file, and returns an AI score. |
-| **AI Ranking** | Candidates are scored and ranked in real time based on skills and experience. |
-| **Analytics** | Database-backed metrics for hiring velocity and model confidence. |
-| **Notifications** | Activity feed for the logged-in user. |
+| **Authentication** | JWT-based login and registration with protected routes. |
+| **Dashboard** | Overview of jobs, candidates, rankings, and hiring analytics. |
+| **Job Management** | Create, edit, update, and delete job postings. |
+| **Candidate Management** | Browse candidate profiles and manage applications. |
+| **Resume Upload** | Upload resumes with candidate information. |
+| **AI Ranking** | Automatically scores and ranks candidates based on skills and experience. |
+| **Analytics** | Displays hiring metrics and platform statistics. |
+| **Notifications** | Activity feed for recruiters. |
+| **Responsive UI** | Optimized for desktop and tablet devices. |
 
 ---
 
 ## Folder Structure
 
-```
-talentrank-ai/
-├── backend/                  # Express API + SQLite
-│   ├── src/
-│   │   ├── config/           # Environment constants
-│   │   ├── controllers/      # HTTP request handlers
-│   │   ├── db/               # Database schema, connection, and query helpers
-│   │   ├── middleware/       # Authentication middleware
-│   │   ├── routes/           # API route definitions
-│   │   ├── services/         # Business logic
-│   │   └── utils/            # Response helpers
-│   ├── uploads/              # Saved resume files
-│   └── talentrank.db         # SQLite database (auto-created)
+```text
+TalentRank-AI/
 │
-├── frontend/                 # React + Vite
+├── frontend/
 │   ├── src/
-│   │   ├── components/       # Layout, ProtectedRoute
-│   │   ├── data/             # Sample data files (deprecated in favor of API calls)
-│   │   ├── pages/            # All application pages
-│   │   ├── styles/           # Global CSS
-│   │   └── utils/api.js      # API request helper with JWT injection
-│   └── vite.config.js        # Dev server + proxy configuration
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── styles/
+│   │   ├── utils/
+│   │   │   └── api.js
+│   │   └── assets/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
 │
-├── docs/screenshots/         # Placeholder screenshots (add your own)
-└── README.md                 # Short project overview and run instructions
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── db/
+│   │   ├── middleware/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── utils/
+│   │   └── server.js
+│   ├── uploads/
+│   ├── talentrank.db
+│   └── package.json
+│
+├── docs/
+│   └── screenshots/
+│
+└── README.md
 ```
 
 ---
 
 ## Screenshots
 
-> Placeholder images below.
+> Add screenshots of your application inside `docs/screenshots`.
 
 | Page | Screenshot |
 |------|------------|
-| Login | ![Login](docs/screenshots/login.png) |
-| Dashboard | ![Dashboard](docs/screenshots/dashboard.png) |
-| Jobs List | ![Jobs List](docs/screenshots/jobs.png) |
-| Candidate Upload | ![Candidate Upload](docs/screenshots/upload.png) |
-| Ranking Results | ![Ranking Results](docs/screenshots/ranking.png) |
-| Analytics | ![Analytics](docs/screenshots/analytics.png) |
-
+| Login | ![](docs/screenshots/login.png) |
+| Dashboard | ![](docs/screenshots/dashboard.png) |
+| Jobs | ![](docs/screenshots/jobs.png) |
+| Resume Upload | ![](docs/screenshots/upload.png) |
+| Candidate Ranking | ![](docs/screenshots/ranking.png) |
+| Analytics | ![](docs/screenshots/analytics.png) |
 
 ---
 
@@ -72,27 +130,61 @@ talentrank-ai/
 
 ### Prerequisites
 
-- Node.js 20 (or newer)
-- npm 10+
+- Node.js 20 or later
+- npm
 
-### 1. Clone or import the project
+### Clone Repository
 
 ```bash
-cd backend && npm install
-cd ../frontend && npm install
+git clone https://github.com/SiddardhaShayini/TalentRank-AI.git
+cd TalentRank-AI
 ```
 
-The backend also needs a writable `uploads/` directory. It is created automatically on first startup.
+### Install Backend Dependencies
 
-### 2. Environment setup (optional)
+```bash
+cd backend
+npm install
+```
 
-The backend reads the JWT secret from these sources in order:
+### Install Frontend Dependencies
 
-1. `SESSION_SECRET` environment variable
-2. `JWT_SECRET` environment variable
-3. Default fallback: `talentrank-secret`
+```bash
+cd ../frontend
+npm install
+```
 
-For production, always set a real secret via `SESSION_SECRET`.
+---
+
+## Environment Variables
+
+### Backend
+
+The backend reads the JWT secret using the following order:
+
+1. `SESSION_SECRET`
+2. `JWT_SECRET`
+3. Default value (`talentrank-secret`)
+
+Example:
+
+```env
+SESSION_SECRET=your-secret-key
+```
+
+### Frontend (Production)
+
+Create:
+
+```text
+frontend/.env.production
+```
+
+Add:
+
+```env
+VITE_API_URL=https://talentrank-ai-i0of.onrender.com
+```
 
 ---
 
@@ -100,20 +192,32 @@ For production, always set a real secret via `SESSION_SECRET`.
 
 ```bash
 cd backend
+```
+
+Linux/macOS
+
+```bash
 PORT=3001 node src/server.js
 ```
-OR
-```bash
+
+Windows PowerShell
+
+```powershell
 $env:PORT=3001
 npm start
 ```
 
-The server will:
-1. Initialize the SQLite database using `src/db/schema.sql`
-2. Seed demo data on first run
-3. Listen on `http://localhost:3001`
+The backend will:
 
-Health check:
+1. Initialize the SQLite database.
+2. Seed demo data.
+3. Start on:
+
+```
+http://localhost:3001
+```
+
+Health Check
 
 ```bash
 curl http://localhost:3001/health
@@ -128,48 +232,124 @@ cd frontend
 npm run dev
 ```
 
-The dev server starts on `http://localhost:5000`. It proxies all `/api/*` calls to the backend at `http://localhost:3001`, so you can run the frontend without worrying about CORS.
+The application starts at:
+
+```
+http://localhost:5000
+```
+
+During development, Vite automatically proxies every `/api/*` request to the backend running on port **3001**.
 
 ---
 
-## Database Setup
+## Demo Credentials
 
-No manual setup is required. The SQLite database is created at:
+Use the following credentials to explore the application.
+
+**Email**
 
 ```
+maya@talentrank.ai
+```
+
+**Password**
+
+```
+password123
+```
+
+---
+
+## Deployment
+
+### Deployment Architecture
+
+```text
+                GitHub Repository
+                       │
+          ┌────────────┴────────────┐
+          │                         │
+          ▼                         ▼
+  Vercel (Frontend)         Render (Backend)
+          │                         │
+          └────────── REST API ─────┘
+                       │
+                       ▼
+                SQLite Database
+```
+
+### Deployment Process
+
+1. Push source code to GitHub.
+2. Deploy the backend on Render.
+3. Deploy the frontend on Vercel.
+4. Configure the frontend using:
+
+```env
+VITE_API_URL=https://talentrank-ai-i0of.onrender.com
+```
+
+5. Every push to the **main** branch automatically triggers a new deployment on Vercel.
+
+---
+
+## Database
+
+The application automatically creates the SQLite database during startup.
+
+Database location:
+
+```text
 backend/talentrank.db
 ```
 
-Schema is defined in `backend/src/db/schema.sql` and applied by `backend/src/db/database.js` on startup. Seed data is also inserted automatically on first run.
+The schema is initialized automatically from:
 
-### Key tables
+```text
+backend/src/db/schema.sql
+```
 
-| Table | Purpose |
+### Database Tables
+
+| Table | Description |
 |---|---|
-| `users` | Recruiters and admins |
-| `jobs` | Published job postings |
-| `candidates` | Candidate profiles |
-| `applications` | Links candidates to jobs |
-| `uploaded_resumes` | Resume file metadata and parsed text |
-| `ai_scores` | AI ranking scores per candidate |
-| `notifications` | User activity feed |
+| users | Registered users |
+| jobs | Job postings |
+| candidates | Candidate profiles |
+| applications | Candidate applications |
+| uploaded_resumes | Resume metadata |
+| ai_scores | AI-generated ranking scores |
+| notifications | User notifications |
 
 ---
 
-## AI Model Setup
+## AI Ranking
 
-The current AI scoring is a deterministic, explainable model implemented in `backend/src/services/rankingService.js`. It requires no external API keys or GPU setup.
+The application currently uses a lightweight deterministic scoring algorithm.
 
-### Scoring logic
+### Scoring Formula
 
+```text
+Base Score                : 70
+
+Skill Bonus               : +3 per skill (Maximum 20)
+
+Experience Bonus          : +7 (Experience > 5 years)
+
+Excellent Match           : 90+
+
+Strong Match              : 80–89
+
+Moderate Match            : Below 80
 ```
-Base score:        70
-+ skill bonus:     +3 per skill (max 20)
-+ experience bonus:+7 if experience > 5 years
-Match level:       Excellent ≥ 90, Strong ≥ 80, Moderate < 80
+
+The ranking logic is implemented in:
+
+```text
+backend/src/services/rankingService.js
 ```
 
-To upgrade to a real LLM or ML model, replace the `rankResume` function in `backend/src/services/rankingService.js` with a call to your preferred inference provider (e.g., OpenAI, Anthropic, or a local Ollama instance) and store the returned score in the `ai_scores` table.
+The implementation can easily be replaced with a trained machine learning model, OpenAI API, Ollama, or another LLM.
 
 ---
 
@@ -179,58 +359,69 @@ To upgrade to a real LLM or ML model, replace the `rankResume` function in `back
 
 | Method | Endpoint | Description |
 |---|---|---|
-| POST | `/api/auth/register` | Create a new account |
-| POST | `/api/auth/login` | Log in and receive a JWT |
+| POST | `/api/auth/register` | Register user |
+| POST | `/api/auth/login` | Login |
 
 ### Jobs
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/jobs` | List all jobs |
-| GET | `/api/jobs/:id` | Get a single job |
-| POST | `/api/jobs` | Create a job |
-| PUT | `/api/jobs/:id` | Update a job |
-| DELETE | `/api/jobs/:id` | Delete a job |
+| Method | Endpoint |
+|---|---|
+| GET | `/api/jobs` |
+| GET | `/api/jobs/:id` |
+| POST | `/api/jobs` |
+| PUT | `/api/jobs/:id` |
+| DELETE | `/api/jobs/:id` |
 
 ### Candidates
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/candidates` | List all candidates |
-| GET | `/api/candidates/:id` | Get a single candidate |
-| POST | `/api/candidates` | Create a candidate manually |
-| PUT | `/api/candidates/:id` | Update a candidate |
-| DELETE | `/api/candidates/:id` | Delete a candidate |
+| Method | Endpoint |
+|---|---|
+| GET | `/api/candidates` |
+| GET | `/api/candidates/:id` |
+| POST | `/api/candidates` |
+| PUT | `/api/candidates/:id` |
+| DELETE | `/api/candidates/:id` |
 
-### Resume & Ranking
+### Resume
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/resume/upload` | Upload a resume file and create a scored candidate |
-| POST | `/api/resume/parse` | Parse raw resume text into extracted skills |
-| GET | `/api/ranking` | Get all candidates with their latest AI scores |
+| Method | Endpoint |
+|---|---|
+| POST | `/api/resume/upload` |
+| POST | `/api/resume/parse` |
 
-### Analytics & Notifications
+### Analytics
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/analytics` | Dashboard metrics (job count, candidate count, average score) |
-| GET | `/api/notifications` | Activity feed for the logged-in user |
+| Method | Endpoint |
+|---|---|
+| GET | `/api/analytics` |
 
-All endpoints except `/api/auth/*` require a `Bearer <token>` header.
+### Notifications
+
+| Method | Endpoint |
+|---|---|
+| GET | `/api/notifications` |
+
+> All API endpoints except `/api/auth/*` require a valid JWT Bearer token.
 
 ---
 
 ## Future Improvements
 
-- **Job-specific ranking** — Match candidates against a selected job's requirements instead of scoring them in isolation.
-- **Duplicate prevention** — Detect and update existing candidates when the same email is uploaded again.
-- **Production deployment** — Serve the built frontend from the backend or configure `VITE_API_URL` for separate hosting.
-- **Real ML model** — Replace the rule-based scoring with a fine-tuned model or LLM evaluation.
-- **Email notifications** — Send alerts when high-scoring candidates are uploaded.
-- **Candidate search / filtering** — Add search and filter controls to the candidates list.
+- Integrate a real machine learning or LLM-based ranking model.
+- Semantic resume parsing using embeddings.
+- Candidate search and filtering.
+- Email notifications.
+- Interview scheduling.
+- Role-specific candidate ranking.
+- Cloud database support (PostgreSQL/MySQL).
+- Resume duplicate detection.
+- Multi-user organization support.
+- Docker containerization.
 
 ---
 
-## 👨‍💻 Developer
-**Siddardha Shayini** 
+## Developer
+
+**Siddardha Shayini**
+
+- GitHub: https://github.com/SiddardhaShayini
